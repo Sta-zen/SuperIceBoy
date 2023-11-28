@@ -4,17 +4,12 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public Enemy Enemy;
-    public void Awake()
-    {
-        Enemy = GetComponent<Enemy>();
-    }
+    public Enemy enemy;
     private float horizontal;
-    public static float speed = 8f;
+    public static float speed = 12f;
     private float jumpingPower = 16f;
     private bool isFacingRight = true;
 
-/*     private bool doubleJump; */
 
     private bool isJumping;
     public int maxJumps = 2;
@@ -31,10 +26,10 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 wallJumpingPower = new Vector2(8f, 16f);
 
     private bool canDash = true;
-    private bool isDashing;
-    public float dashingPower = 25f;
+    public bool isDashing;
+    public float dashingPower = 35f;
     private float dashingTime = 0.2f;
-    private float dashingCooldown = 1f;
+    private float dashingCooldown = 0.5f;
 
     private float coyoteTime = 1f;
     private float coyoteTimeCounter;
@@ -63,11 +58,6 @@ public class PlayerMovement : MonoBehaviour
         }
 
         horizontal = Input.GetAxisRaw("Horizontal");
-
-/*         if (IsGrounded() && !Input.GetButton("Jump"))
-        {
-            doubleJump = false;
-        } */
 
         if (IsGrounded())
         {

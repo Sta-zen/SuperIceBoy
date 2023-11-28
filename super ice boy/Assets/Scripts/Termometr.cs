@@ -7,7 +7,7 @@ public class Termometr : MonoBehaviour
 {
     public PlayerMovement PlayerMovement;
     public Image bar;
-    public float fill;
+    public static float fill;
     // Start is called before the first frame update
 
     public void Awake()
@@ -16,25 +16,25 @@ public class Termometr : MonoBehaviour
     }
     void Start()
     {
-        fill = 0.0f;
+        fill = 0.5f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        fill += Time.deltaTime * 0.01f;
+        fill += Time.deltaTime * 0.005f;
         bar.fillAmount = fill;
         if (fill <= 0.25f)
         {
-            PlayerMovement.dashingPower = 40f;
-            PlayerMovement.speed = 12f;
+            PlayerMovement.dashingPower = 50f;
+            PlayerMovement.speed = 16f;
             PlayerMovement.maxJumps = 3;
         }
         else if (fill >= 0.25f)
         {
-            PlayerMovement.dashingPower = 25f;
+            PlayerMovement.dashingPower = 35f;
             PlayerMovement.maxJumps = 2;
-            PlayerMovement.speed = 8f;
+            PlayerMovement.speed = 12f;
         }
         else if (fill >= 0.75f)
         {
